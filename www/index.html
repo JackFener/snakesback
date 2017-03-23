@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<!--
+  * Please see the included README.md file for license terms and conditions.
+  -->
+<head>
+    <title>Snake's Back</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+    <!-- see http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-dont-forget-the-viewport-meta-tag -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
+    <style>
+        /* following two viewport lines are equivalent to meta viewport statement above, needed for Windows */
+        /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html and http://dev.w3.org/csswg/css-device-adapt/ */
+        @-ms-viewport { width: 100vw ; min-zoom: 100% ; zoom: 100% ; }  @viewport { width: 100vw ; min-zoom: 100% zoom: 100% ; }
+        @-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }           @viewport { user-zoom: fixed ; min-zoom: 100% ; }
+    </style>
+    <script>
+        
+        document.addEventListener("touchmove", touchMove, false);
+        function touchMove(e)
+        {
+            e.preventDefault();
+        }
+    </script>
+    <style> 
+        body, html 
+        {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #691A99;
+
+            min-height: 100%;
+            height: 100%;
+            max-height: 100%;
+        }
+        html 
+        {
+            display: table;
+            margin: auto;
+        }
+        body 
+        {
+            display: table-cell;
+            vertical-align: middle;
+        }
+        img
+        {
+            padding:30px
+        }
+        div
+        {
+            padding:30px
+        }
+        button
+        {
+            background-color: #68EFAD; /* Green */
+            border: none;
+            color: #FAFAFA;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        }
+        canvas 
+        {
+            position:absolute;
+        }
+    </style>
+</head>
+
+<body align="center">
+    <div id="title" style="color: #FAFAFA;">
+        <img src="./img/logo.png" style="width: 150px;">
+    </div>
+    <div id="buttons">
+        <button onclick="gioca();">Play</button>
+        <button onclick="giocaRemix();">Switch to Remix Mode</button>
+    </div>
+    <div id="record" style="color:#68EFAD;">
+        <img src="./img/record.png" style="width: 75px;">
+        <script>
+            var storage = window.localStorage;
+            if(storage.getItem('record')==null)
+            {
+                storage.setItem('record',0);
+            }
+            document.getElementById("record").innerHTML+="<br>"+"<b>"+storage.getItem('record')+"</b>";
+        </script>
+    </div>
+    <div id="lastScore" style="color:#68EFAD;">
+        <img src="./img/lastScore.png" style="width: 75px;">
+        <script>
+            if(storage.getItem('lastScore')==null)
+            {
+                storage.setItem('lastScore', 0);
+            }
+            var storage = window.localStorage;
+            document.getElementById("lastScore").innerHTML+="<br>"+"<b>"+storage.getItem('lastScore')+"</b>";
+        </script>
+    </div>
+    
+
+</body>
+</html>
+
